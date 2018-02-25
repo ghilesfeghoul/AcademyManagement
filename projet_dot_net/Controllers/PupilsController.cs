@@ -33,6 +33,23 @@ namespace projet_dot_net.Controllers
            // return View(pupils.ToList());
         }
 
+        //
+        public JsonResult GetSearchingData(string SearchBy, string SearchValue)
+        {
+            List<Pupils> StuList = new List<Pupils>();
+
+            StuList = _pupilRepository.GetPupil().Where(x => x.LastName.StartsWith(SearchValue)).ToList();
+            foreach (var item in StuList)
+            {
+                Console.WriteLine("fddddd");
+                Console.WriteLine(item.LastName);
+            }
+            return Json(StuList, JsonRequestBehavior.AllowGet);
+            //foreach(var item in StuList)
+
+        }
+        //
+
         // GET: Pupils/Details/5
         public ActionResult Details(Guid? id)
         {

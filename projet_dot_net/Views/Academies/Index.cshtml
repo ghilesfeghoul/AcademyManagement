@@ -3,77 +3,77 @@
 @{
     ViewBag.Title = "Index";
 }
+<div class="container">
+    <h2>Index</h2>
 
-<h2>Index</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p><br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p><br/>
-<p>
     <select id="SearchBy">
         <option value="Name">Name</option>
         <option value="ID">ID</option>
-    </select><br/><br />
-    @Html.TextBox("Search")<input type="submit" id="SearchBtn" value="Search" /> <br/><br />
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-            </th>
-        </tr>
-    </thead>
-<tbody id="DataSearching">
-        @foreach (var item in Model)
-        {
+    </select><br /><br />
+    @Html.TextBox("Search")<input type="submit" id="SearchBtn" value="Search" /> <br /><br />
+
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                </th>
             </tr>
-        }
-    </tbody>
+        </thead>
+        <tbody id="DataSearching">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
         <tr>
             @Html.ActionLink("Recherche", "Recherche")
         </tr>
 
-</table>
+    </table>
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#SearchBtn").click(function () {
+                var SearchBy = $("#SearchBy").val();
+                var SearchValue = $("#Search").val();
+                var SetData = $("#DataSearching");
+                SetData.html("");
+                $.ajax({
+                    type: "GET",
+                    url: "/Academies/GetSearchingData?SearchBy=" + SearchBy + "&SearchValue=" + SearchValue,
+                    contentType: "html",
+                    success: function (result) {
+                        if (result.length == 0) {
+                            SetData.append('<tr style="color:red"><td colspan="3">No Match Data</td></tr>')
+                        }
+                        else {
+                            $.each(result, function (index, value) {
+                                var Data = "<tr>" +
+                                    "<td style=\"color: red\">" + value.Name + "</td>" +
+                                    "</tr>";
+                                SetData.append(Data);
 
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#SearchBtn").click(function () {
-            var SearchBy = $("#SearchBy").val();
-            var SearchValue = $("#Search").val();
-            var SetData = $("#DataSearching");
-            SetData.html("");
-            $.ajax({
-                type: "post",
-                url: "/Academies/GetSearchingData?SearchBy=" + SearchBy + "&SearchValue=" + SearchValue,
-                contentType: "html",
-                success: function (result) {
-                    if (result.length == 0) {
-                        SetData.append('<tr style="color:red"><td colspan="3">No Match Data</td></tr>')
+                            });
+                        }
                     }
-                    else {
-                        $.each(result, function (index, value) {
-                            var Data = "<tr>" +
-                                "<td style=\"color: red\">" + value.Name+ "</td>"                              
-                                "</tr>";
-                            SetData.append(Data);
-
-                        });
-                    }
-                }
+                });
             });
         });
-    });
-</script>
+    </script>
