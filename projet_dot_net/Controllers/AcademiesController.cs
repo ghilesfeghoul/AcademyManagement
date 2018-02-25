@@ -29,6 +29,39 @@ namespace projet_dot_net.Controllers
             //return View(db.Academies.ToList());
         }
 
+        //
+        public JsonResult GetSearchingData(string SearchBy, string SearchValue)
+        {
+            List<Academies> StuList = new List<Academies>();
+           
+                StuList = _academyRepository.GetAcademy().Where(x => x.Name.StartsWith(SearchValue)).ToList();
+            foreach (var item in StuList)
+            {
+                Console.WriteLine("fddddd");
+                Console.WriteLine(item.Name);
+            }
+            return Json(StuList, JsonRequestBehavior.AllowGet);
+            //foreach(var item in StuList)
+            
+        }
+        //
+
+
+        public ActionResult Recherche(Academies rechercheViewModel)
+        {
+            rechercheViewModel.ListAcademieRechercher = _academyRepository.GetAcademy().ToList();
+            return View(rechercheViewModel);
+        }
+
+        public ActionResult ResultatsRecherche(Academies rechercheViewModel)
+        {
+            if (!string.IsNullOrWhiteSpace(rechercheViewModel.Recherche))
+                rechercheViewModel.ListAcademieRechercher = _academyRepository.GetAcademy().Where(r => r.Name.IndexOf(rechercheViewModel.Recherche, StringComparison.CurrentCultureIgnoreCase) >= 0).ToList();
+            else
+                rechercheViewModel.ListAcademieRechercher = new List<Academies>();
+            return PartialView(rechercheViewModel);
+        }
+
         // GET: Academies/Details/5
         public ActionResult Details(Guid? id)
         {

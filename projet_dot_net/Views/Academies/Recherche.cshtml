@@ -1,0 +1,26 @@
+﻿@model projet_dot_net.Model.Academies
+@{
+    ViewBag.Title = "Chercher un restaurant";
+}
+
+@using (Ajax.BeginForm("ResultatsRecherche", new AjaxOptions
+{
+    HttpMethod = "GET",
+    InsertionMode = InsertionMode.Replace,
+    UpdateTargetId = "resultats",
+}))
+{
+    
+    <input type="text"  style="border-top:11px" /><br/>
+    <input type="text" value="" style="border-top:11px" /><br />
+    <input type="text" value="" style="border-top:11px" /><br /><br />
+    @Html.TextBoxFor(m => m.Recherche);<input type="submit" value="Rechercher" style="border-top:11px" /><br /><br />
+    <input type="submit" value="Rechercher" style="border-top:11px"/>
+    <p>Vue principale : @DateTime.Now.ToLongTimeString()</p>
+
+    <div id="resultats">
+        @{Html.RenderAction("ResultatsRecherche", new { rechercheViewModel = Model });
+        }
+    </div>
+            }
+<script type="text/javascript" src="~/Scripts/jquery.unobtrusive-ajax.js"></script>

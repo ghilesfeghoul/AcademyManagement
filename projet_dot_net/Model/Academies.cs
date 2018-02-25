@@ -28,5 +28,9 @@ namespace projet_dot_net.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Establishments> Establishments { get; set; }
+
+        public string Recherche { get; set; }
+        public List<Academies> ListAcademieRechercher { get; set; }
+        public List<Academies> ListAcademie { get; set; }
     }
 }
