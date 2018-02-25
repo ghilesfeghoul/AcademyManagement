@@ -4,79 +4,43 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Tutors</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PostCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PostCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Town)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Town)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tel)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tel)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Mail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Comment)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Comment)
-        </dd>
-
-    </dl>
+<header class="jumbotron-fluid">
+    <br />
+    <br />
+    <br />
+    <br />
+    <h2 class="text-center text-primary">Détails du tuteur</h2>
+</header>
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.LastName) : @Html.DisplayFor(model => model.LastName)</div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.FirstName) : @Html.DisplayFor(model => model.FirstName) | <a href='javascript:window.location.href = "@Url.Action("Details", "Evaluations", new { id = Model.Evaluations.Id} )";'>Voir l'évaluation</a></div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Address) : @Html.DisplayFor(model => model.Address) | <a href='javascript:window.location.href = "@Url.Action("Details", "Pupils", new { id = Model.Pupils.Id} )";'>Voir détails de l'élève</a></div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.PostCode) : @Html.DisplayFor(model => model.PostCode) | <a href='javascript:window.location.href = "@Url.Action("Details", "Pupils", new { id = Model.Pupils.Id} )";'>Voir détails de l'élève</a></div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Town) : @Html.DisplayFor(model => model.Town) | <a href='javascript:window.location.href = "@Url.Action("Details", "Pupils", new { id = Model.Pupils.Id} )";'>Voir détails de l'élève</a></div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Tel) : @Html.DisplayFor(model => model.Tel) | <a href='javascript:window.location.href = "@Url.Action("Details", "Pupils", new { id = Model.Pupils.Id} )";'>Voir détails de l'élève</a></div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Mail) : @Html.DisplayFor(model => model.Mail) | <a href='javascript:window.location.href = "@Url.Action("Details", "Pupils", new { id = Model.Pupils.Id} )";'>Voir détails de l'élève</a></div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Comment) : @Html.DisplayFor(model => model.Comment) | <a href='javascript:window.location.href = "@Url.Action("Details", "Pupils", new { id = Model.Pupils.Id} )";'>Voir détails de l'élève</a></div>
+        </div>
+        
+    </div>
+    <p>
+        @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Retour à la liste", "Index") |
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

@@ -16,10 +16,13 @@ namespace projet_dot_net.Model
     public partial class Results
     {
         public System.Guid Id { get; set; }
+        [Display(Name = "Nom")]
         [Required(ErrorMessage = "the Evaluation is required")]
         public System.Guid Evaluation_Id { get; set; }
+        [Display(Name = "Elève")]
         [Required(ErrorMessage = "the Pupils is required")]
         public System.Guid Pupil_Id { get; set; }
+        [Display(Name = "Note")]
         [Required(ErrorMessage = "the Note is required")]
         public double Note { get; set; }
     

@@ -22,16 +22,22 @@ namespace projet_dot_net.Model
         }
     
         public System.Guid Id { get; set; }
+        [Display(Name="Nom")]
         [Required(ErrorMessage = "the Name is required")]
         public string Name { get; set; }
+        [Display(Name = "Addresse")]
         [Required(ErrorMessage = "the Address is required")]
         public string Address { get; set; }
+        [Display(Name = "Code postal")]
         [Required(ErrorMessage = "the PostCode is required")]
         public string PostCode { get; set; }
+        [Display(Name = "Ville")]
         [Required(ErrorMessage = "the Town is required")]
         public string Town { get; set; }
+        [Display(Name = "Utilisateur")]
         [Required(ErrorMessage = "the User is required")]
         public System.Guid User_Id { get; set; }
+        [Display(Name = "Académie")]
         [Required(ErrorMessage = "the Academie is required")]
         public System.Guid Academie_Id { get; set; }
     

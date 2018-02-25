@@ -24,16 +24,21 @@ namespace projet_dot_net.Model
         }
     
         public System.Guid Id { get; set; }
+        [Display(Name = "Nom d'utilisateur")]
         [Required(ErrorMessage = "the UserName is required")]
         public string UserName { get; set; }
+        [Display(Name = "Mot de passe")]
         [Required(ErrorMessage = "the Password is required")]
         [StringLength(255, ErrorMessage = "Must be between 5 and 255 characters", MinimumLength = 5)]
         [DataType(DataType.Password)]
         public string Password { get; set; }
         [Required(ErrorMessage = "the Firstname is required")]
+        [Display(Name = "Nom")]
         public string FirstName { get; set; }
         [Required(ErrorMessage = "the LastName is required")]
+        [Display(Name = "Prénom")]
         public string LastName { get; set; }
+        [Display(Name = "Email")]
         [Required(ErrorMessage = "the Mail is required")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Mail { get; set; }

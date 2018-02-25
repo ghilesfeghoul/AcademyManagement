@@ -4,47 +4,73 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Classrooms</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Establishments.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Establishments.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Users.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Users.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Years.Id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Years.Id)
-        </dd>
-
-    </dl>
+<header class="jumbotron-fluid">
+    <br />
+    <br />
+    <br />
+    <br />
+    <h2 class="text-center text-primary">Détails de la classe @Html.DisplayFor(model => model.Title)</h2>
+</header>
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Title) : @Html.DisplayFor(model => model.Title)</div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Establishments.Name) : @Html.DisplayFor(model => model.Establishments.Name) | <a href='javascript:window.location.href = "@Url.Action("Details", "Academies", new { id = Model.Establishments.Id} )";'>Voir détails de l'établissement</a></div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Users.UserName) : @Html.DisplayFor(model => model.Users.UserName) | <a href='javascript:window.location.href = "@Url.Action("Details", "Users", new { id = Model.Users.Id} )";'>Voir détails de l'utilisateur</a></div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Years.Id) : @Html.DisplayFor(model => model.Years.Id)</div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Retour à la liste", "Index") |
+        <a href="#" data-toggle="modal" data-target="#myModal">Voir les élèves</a>
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Liste des élèves de la classe de @Html.DisplayFor(model => model.Title) </h4>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Pupils)
+                        {
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName) 
+                                </td>
+                                <td>
+                                    <a href='javascript:window.location.href = "@Url.Action("Edit", "Pupils", new { id = item.Id} )";'>Modifier</a>
+                                    <a href='javascript:window.location.href = "@Url.Action("Details", "Pupils", new { id = item.Id} )";'>Détails</a>
+                                    <a href='javascript:window.location.href = "@Url.Action("Delete", "Pupils", new { id = item.Id} )";'>Supprimer</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+
+    </div>
+</div>

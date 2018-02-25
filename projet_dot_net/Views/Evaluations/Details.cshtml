@@ -4,55 +4,33 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Evaluations</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TotalPoint)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TotalPoint)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Classrooms.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Classrooms.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Periods.Id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Periods.Id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Users.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Users.UserName)
-        </dd>
-
-    </dl>
+<header class="jumbotron-fluid">
+    <br />
+    <br />
+    <br />
+    <br />
+    <h2 class="text-center text-primary">Détails de l'évaluation</h2>
+</header>
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Date) : @Html.DisplayFor(model => model.Date)</div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.TotalPoint) : @Html.DisplayFor(model => model.TotalPoint)</div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Classrooms.Title) : @Html.DisplayFor(model => model.Classrooms.Title) | <a href='javascript:window.location.href = "@Url.Action("Details", "Classrooms", new { id = Model.Classrooms.Id} )";'>Voir détails de la classe</a></div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Periods.Id) : @Html.DisplayFor(model => model.Periods.Id) | <a href='javascript:window.location.href = "@Url.Action("Details", "Periods", new { id = Model.Periods.Id} )";'>Voir détails de la période</a></div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Users.UserName) : @Html.DisplayFor(model => model.Users.UserName) | <a href='javascript:window.location.href = "@Url.Action("Details", "Users", new { id = Model.Users.Id} )";'>Voir détails de l'utilisateur</a></div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Retour à la liste", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

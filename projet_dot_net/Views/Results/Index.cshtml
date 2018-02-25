@@ -4,42 +4,56 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<header class="jumbotron-fluid">
+    <br />
+    <br />
+    <br />
+    <br />
+    <h2 class="text-center text-primary">Liste des résultats</h2>
+</header>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Note)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Evaluations.Id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Pupils.FirstName)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Note)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Evaluations.Id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pupils.FirstName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
+<section class="container">
 
-</table>
+    <p>
+        @Html.ActionLink("Ajouter un résultat", "Create", null, new { @class = "btn btn-outline-dark pull-right" })
+    </p>
+    <br />
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Note)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Evaluations.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pupils.FirstName)
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Note)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Evaluations.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pupils.FirstName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Modifier", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Voir détails", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Supprimer", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

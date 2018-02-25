@@ -22,8 +22,10 @@ namespace projet_dot_net.Model
         }
     
         public System.Guid Id { get; set; }
+        [Display(Name = "Niveau")]
         [Required(ErrorMessage = "the Title is required")]
         public string Title { get; set; }
+        [Display(Name = "Cycle")]
         [Required(ErrorMessage = "the Cycle is required")]
         public System.Guid Cycle_Id { get; set; }
     

@@ -23,13 +23,21 @@ namespace projet_dot_net.Model
         }
     
         public System.Guid Id { get; set; }
+
+        [Display(Name = "Nom")]
         [Required(ErrorMessage = "the Title is required")]
         [StringLength(100)]
         public string Title { get; set; }
+
+        [Display(Name = "Utilisateur")]
         [Required(ErrorMessage = "the User is required")]
         public System.Guid User_Id { get; set; }
+
+        [Display(Name = "Année")]
         [Required(ErrorMessage = "the Year is required")]
         public System.Guid Year_Id { get; set; }
+
+        [Display(Name = "Etablissement")]
         [Required(ErrorMessage = "the Establishment is required")]
         public System.Guid Establishment_Id { get; set; }
 

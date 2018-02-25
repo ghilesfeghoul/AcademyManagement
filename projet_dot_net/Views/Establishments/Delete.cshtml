@@ -1,72 +1,49 @@
 ﻿@model projet_dot_net.Model.Establishments
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Supprimer";
 }
 
-<h2>Delete</h2>
+<header class="jumbotron-fluid">
+    <br />
+    <br />
+    <br />
+    <br />
+    <h2 class="text-center text-primary">Supprimer l'établissement</h2>
+</header>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Establishments</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PostCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PostCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Town)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Town)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Academies.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Academies.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Users.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Users.UserName)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+    <div class="container">
+        <div class="alert alert-danger" role="alert">
+            <h3>Etes vous sûr de vouloir supprimer cet établissement ?</h3>
         </div>
-    }
-</div>
+        <div class="jumbotron">
+            <div class="row">
+                <div class="col">@Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name)</div>
+            </div>
+            <div class="row">
+                <div class="col">@Html.DisplayNameFor(model => model.Address) : @Html.DisplayFor(model => model.Address)</div>
+            </div>
+            <div class="row">
+                <div class="col">@Html.DisplayNameFor(model => model.PostCode) : @Html.DisplayFor(model => model.PostCode)</div>
+            </div>
+            <div class="row">
+                <div class="col">@Html.DisplayNameFor(model => model.Town) : @Html.DisplayFor(model => model.Town)</div>
+            </div>
+            <div class="row">
+                <div class="col">@Html.DisplayNameFor(model => model.Academies.Name) : @Html.DisplayFor(model => model.Academies.Name) | <a href='javascript:window.location.href = "@Url.Action("Details", "Academies", new { id = Model.Academies.Id} )";'>Voir détails de l'académie</a></div>
+            </div>
+            <div class="row">
+                <div class="col">@Html.DisplayNameFor(model => model.Users.UserName) : @Html.DisplayFor(model => model.Users.UserName) | <a href='javascript:window.location.href = "@Url.Action("Details", "Classrooms", new { id = Model.Users.Id} )";'>Voir détails de l'utilisateur</a></div>
+            </div>
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Supprimer" class="btn btn-danger"/> |
+                @Html.ActionLink("Retour à la liste", "Index")
+            </div>
+        }
+    </div>

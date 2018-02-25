@@ -23,12 +23,15 @@ namespace projet_dot_net.Model
     
         public System.Guid Id { get; set; }
         [Required]
+        [Display(Name = "Début")]
         [DataType(DataType.Date)]
         public System.DateTime Begin { get; set; }
         [Required]
+        [Display(Name = "Fin")]
         [DataType(DataType.Date)]
         public System.DateTime End { get; set; }
         [Required]
+        [Display(Name = "Année")]
         public System.Guid Year_Id { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

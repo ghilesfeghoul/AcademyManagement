@@ -4,23 +4,21 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Years</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Year)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Year)
-        </dd>
-
-    </dl>
+<header class="jumbotron-fluid">
+    <br />
+    <br />
+    <br />
+    <br />
+    <h2 class="text-center text-primary">Détails de l'année</h2>
+</header>
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Year) : @Html.DisplayFor(model => model.Year)</div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Retour à la liste", "Index") 
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

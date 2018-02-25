@@ -4,55 +4,168 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<header class="jumbotron-fluid">
+    <br />
+    <br />
+    <br />
+    <br />
+    <h2 class="text-center text-primary">Détails de l'utilisateur</h2>
+</header>
 
-<div>
-    <h4>Users</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Password)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Password)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Mail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Mail)
-        </dd>
-
-    </dl>
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.UserName) : @Html.DisplayFor(model => model.UserName)</div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.FirstName) : @Html.DisplayFor(model => model.FirstName)</div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.LastName) : @Html.DisplayFor(model => model.LastName)</div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Mail) : @Html.DisplayFor(model => model.Mail)</div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Retour à la liste", "Index") |
+        <a href="#" data-toggle="modal" data-target="#myModal">Voir les établissements dirigés</a> | 
+        <a href="#" data-toggle="modal" data-target="#myModal1">Voir les Classes dirigées</a> | 
+        <a href="#" data-toggle="modal" data-target="#myModal2">Voir les évaluations dirigées</a> | 
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Liste des établissement dirigés par @Html.DisplayFor(model => model.UserName) </h4>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Establishments)
+                        {
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                                <td>
+                                    <a href='javascript:window.location.href = "@Url.Action("Edit", "Establishments", new { id = item.Id} )";'>Modifier</a>
+                                    <a href='javascript:window.location.href = "@Url.Action("Details", "Establishments", new { id = item.Id} )";'>Détails</a>
+                                    <a href='javascript:window.location.href = "@Url.Action("Delete", "Establishments", new { id = item.Id} )";'>Supprimer</a>
+                                </td>
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="myModal1" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Liste des classes dirigées par @Html.DisplayFor(model => model.UserName) </h4>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nom</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Classrooms)
+                        {
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Title)
+                                </td>
+                                <td>
+                                    <a href='javascript:window.location.href = "@Url.Action("Edit", "Classrooms", new { id = item.Id} )";'>Modifier</a>
+                                    <a href='javascript:window.location.href = "@Url.Action("Details", "Classrooms", new { id = item.Id} )";'>Détails</a>
+                                    <a href='javascript:window.location.href = "@Url.Action("Delete", "Classrooms", new { id = item.Id} )";'>Supprimer</a>
+                                </td>
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="myModal2" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Liste des évaluations dirigées par @Html.DisplayFor(model => model.UserName) </h4>
+            </div>
+            <div class="modal-body">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Id</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.Evaluations)
+                        {
+
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td>
+                                    <a href='javascript:window.location.href = "@Url.Action("Edit", "Evaluations", new { id = item.Id} )";'>Modifier</a>
+                                    <a href='javascript:window.location.href = "@Url.Action("Details", "Evaluations", new { id = item.Id} )";'>Détails</a>
+                                    <a href='javascript:window.location.href = "@Url.Action("Delete", "Evaluations", new { id = item.Id} )";'>Supprimer</a>
+                                </td>
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+
+    </div>
+</div>

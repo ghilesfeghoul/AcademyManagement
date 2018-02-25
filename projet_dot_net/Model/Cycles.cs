@@ -11,7 +11,8 @@ namespace projet_dot_net.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Cycles
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +22,7 @@ namespace projet_dot_net.Model
         }
     
         public System.Guid Id { get; set; }
+        [Display(Name = "Cycle")]
         public string Title { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -22,21 +22,29 @@ namespace projet_dot_net.Model
         }
 
         public System.Guid Id { get; set; }
+        [Display(Name = "Nom")]
         [Required(ErrorMessage = "the FirstName is required")]
         public string FirstName { get; set; }
+        [Display(Name = "Prénom")]
         [Required(ErrorMessage = "the LastName is required")]
         public string LastName { get; set; }
+        [Display(Name = "Sexe")]
         [Required(ErrorMessage = "the Sex is required")]
         public short Sex { get; set; }
+        [Display(Name = "Année de naissance")]
         [Required(ErrorMessage = "the BirthdayDate is required")]
         [DataType(DataType.Date)]
         public System.DateTime BirthdayDate { get; set; }
+        [Display(Name = "Etat")]
         [Required(ErrorMessage = "the State is required")]
         public short State { get; set; }
+        [Display(Name = "Tuteur")]
         [Required(ErrorMessage = "the Tutor is required")]
         public System.Guid Tutor_Id { get; set; }
+        [Display(Name = "Classe")]
         [Required(ErrorMessage = "the Classroom is required")]
         public System.Guid Classroom_Id { get; set; }
+        [Display(Name = "Niveau")]
         [Required(ErrorMessage = "the Level is required")]
         public System.Guid Level_Id { get; set; }
 

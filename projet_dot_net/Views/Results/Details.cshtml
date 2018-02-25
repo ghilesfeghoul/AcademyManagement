@@ -4,39 +4,28 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Results</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Note)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Note)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Evaluations.Id)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Evaluations.Id)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Pupils.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Pupils.FirstName)
-        </dd>
-
-    </dl>
+<header class="jumbotron-fluid">
+    <br />
+    <br />
+    <br />
+    <br />
+    <h2 class="text-center text-primary">Détails du résultat</h2>
+</header>
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Note) : @Html.DisplayFor(model => model.Note)</div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Evaluations.Id) : @Html.DisplayFor(model => model.Evaluations.Id) | <a href='javascript:window.location.href = "@Url.Action("Details", "Evaluations", new { id = Model.Evaluations.Id} )";'>Voir l'évaluation</a></div>
+        </div>
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Pupils.FirstName) : @Html.DisplayFor(model => model.Pupils.FirstName) | <a href='javascript:window.location.href = "@Url.Action("Details", "Pupils", new { id = Model.Pupils.Id} )";'>Voir détails de l'élève</a></div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Retour à la liste", "Index") |
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

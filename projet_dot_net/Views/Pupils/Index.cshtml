@@ -4,72 +4,85 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<header class="jumbotron-fluid">
+    <br />
+    <br />
+    <br />
+    <br />
+    <h2 class="text-center text-primary">Liste des élèves</h2>
+</header>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.LastName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Sex)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.BirthdayDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.State)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Classrooms.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Levels.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Tutors.LastName)
-        </th>
-        <th></th>
-    </tr>
+<section class="container">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Sex)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.BirthdayDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.State)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Classrooms.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Levels.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tutors.LastName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>
+    <p>
+        @Html.ActionLink("Ajouter un nouvel élève", "Create", null, new { @class = "btn btn-outline-dark pull-right" })
+    </p>
+    <br />
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Sex)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.BirthdayDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.State)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Classrooms.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Levels.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Tutors.LastName)
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Sex)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BirthdayDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.State)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Classrooms.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Levels.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Tutors.LastName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Modifier", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Voir détails", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Supprimer", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

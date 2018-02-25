@@ -23,6 +23,7 @@ namespace projet_dot_net.Model
         }
         public System.Guid Id { get; set; }
         [Required(ErrorMessage = "the Year is required")]
+        [Display(Name = "Année")]
         public int Year { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

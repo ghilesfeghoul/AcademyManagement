@@ -4,23 +4,68 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<header class="jumbotron-fluid">
+    <br />
+    <br />
+    <br />
+    <br />
+    <h2 class="text-center text-primary">Détails d'une académie</h2>
+</header>
 
-<div>
-    <h4>Academies</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-    </dl>
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col">@Html.DisplayNameFor(model => model.Name) : @Html.DisplayFor(model => model.Name)</div>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Modifier", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Retour à la liste", "Index") |
+        <a href="#" data-toggle="modal" data-target="#myModal">Voir les établissements liées</a>
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Liste des établissement de l'académie de @Html.DisplayFor(model => model.Name) </h4>
+                            </div>
+            <div class="modal-body">
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th>Nom</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model.Establishments)
+    {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a href='javascript:window.location.href = "@Url.Action("Edit", "Establishments", new { id = item.Id} )";'>Modifier</a>
+                <a href='javascript:window.location.href = "@Url.Action("Details", "Establishments", new { id = item.Id} )";'>Détails</a>
+                <a href='javascript:window.location.href = "@Url.Action("Delete", "Establishments", new { id = item.Id} )";'>Supprimer</a>
+            </td>
+        </tr>
+            
+
+    }
+    </tbody>
+                </table>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Fermer</button>
+            </div>
+        </div>
+
+    </div>
+</div>

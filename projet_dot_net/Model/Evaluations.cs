@@ -22,15 +22,20 @@ namespace projet_dot_net.Model
         }
     
         public System.Guid Id { get; set; }
+        [Display(Name = "Classe")]
         [Required(ErrorMessage = "the Classroom is required")]
         public System.Guid Classroom_Id { get; set; }
+        [Display(Name = "Utilisateur")]
         [Required(ErrorMessage = "the User is required")]
         public System.Guid User_Id { get; set; }
+        [Display(Name = "Période")]
         [Required(ErrorMessage = "the Period is required")]
         public System.Guid Period_Id { get; set; }
+        [Display(Name = "Date")]
         [Required(ErrorMessage = "the Date is required")]
         [DataType(DataType.Date)]
         public System.DateTime Date { get; set; }
+        [Display(Name = "Total de points")]
         [Required(ErrorMessage = "the TotalPoint is required")]
         public int TotalPoint { get; set; }
     

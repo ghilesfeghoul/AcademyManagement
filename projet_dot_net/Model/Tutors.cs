@@ -22,23 +22,31 @@ namespace projet_dot_net.Model
         }
     
         public System.Guid Id { get; set; }
+        [Display(Name = "Nom")]
         [Required(ErrorMessage = "the LastName is required")]
         public string LastName { get; set; }
+        [Display(Name = "Prénom")]
         [Required(ErrorMessage = "the Firstname is required")]
         public string FirstName { get; set; }
+        [Display(Name = "Addresse")]
         [Required(ErrorMessage = "the Adresse is required")]
         public string Address { get; set; }
+        [Display(Name = "Code postal")]
         [Required(ErrorMessage = "the Postcode is required")]
         public string PostCode { get; set; }
+        [Display(Name = "Ville")]
         [Required(ErrorMessage = "the town is required")]
         public string Town { get; set; }
+        [Display(Name = "Numéro de téléphone")]
         [Required(ErrorMessage ="the phone number is required")]
         [DataType(DataType.PhoneNumber)]
         [RegularExpression(@"^[+33.]?([0-9]{11})$", ErrorMessage = "Not a valid Phone number")]
         public string Tel { get; set; }
+        [Display(Name = "Email")]
         [Required(ErrorMessage = "The email address is required")]
         [EmailAddress(ErrorMessage = "Invalid Email Address")]
         public string Mail { get; set; }
+        [Display(Name = "Commentaire")]
         public string Comment { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

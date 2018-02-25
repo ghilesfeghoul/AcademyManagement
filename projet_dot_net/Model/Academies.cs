@@ -24,6 +24,7 @@ namespace projet_dot_net.Model
         public System.Guid? Id { get; set; }
         [Required(ErrorMessage ="the Name is required")]
         [StringLength(100)]
+        [Display(Name = "Nom")]
         public string Name { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
