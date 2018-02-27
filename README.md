@@ -1,3 +1,2 @@
-# projet (ASP DotNet) M2 G.I.L ROUEN
-
-# AcademyMangement
+# Asp .Net Project
+> An Asp .Net full stack project for an university project.
